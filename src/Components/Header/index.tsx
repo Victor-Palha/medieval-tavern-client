@@ -1,0 +1,57 @@
+import { useState } from 'react';
+import logo from '../../assets/logo.svg';
+import { RxHamburgerMenu } from "react-icons/rx";
+
+export function Header(){
+    const [sideMenu, setSideMenu] = useState(false);
+
+    return (
+        <>
+        <header className="bg-primary shadow-md">
+            <div className="container mx-auto p-5 flex justify-between items-center">
+                <img src={logo} alt="Logo" className="w-20 lg:w-30"/>
+                <nav className=''>
+                    <RxHamburgerMenu 
+                        className="text-white lg:hidden cursor-pointer" 
+                        size={40}
+                        onClick={() => setSideMenu(!sideMenu)}
+                    />
+                    <ul className="space-x-5 hidden lg:flex">
+                        <li>
+                            <a href="#" className="text-white">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-white">About</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-white">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <aside className={`
+            lg:hidden
+            flex flex-col gap-4
+            z-10
+            ${sideMenu ? 'right-0 w-[300px] h-screen fixed top-[7.5rem]' : 'right-[-300px] w-0 absolute h-0 hidden'}
+            pl-[40px] pr-[30px]
+            bg-primary
+            transition-all
+            duration-700`
+        }>
+                    <ul className="flex flex-col items-center space-y-5">
+                        <li>
+                            <a href="#" className="text-white">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-white">About</a>
+                        </li>
+                        <li>
+                            <a href="#" className="text-white">Contact</a>
+                        </li>
+                    </ul>
+        </aside>
+        </>
+    )
+}
