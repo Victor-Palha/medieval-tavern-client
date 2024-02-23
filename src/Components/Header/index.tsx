@@ -12,19 +12,19 @@ export function Header(){
                 <img src={logo} alt="Logo" className="w-20 lg:w-30"/>
                 <nav className=''>
                     <RxHamburgerMenu 
-                        className="text-white lg:hidden cursor-pointer" 
+                        className="lg:hidden cursor-pointer" 
                         size={40}
                         onClick={() => setSideMenu(!sideMenu)}
                     />
-                    <ul className="space-x-5 hidden lg:flex">
+                    <ul className="space-x-5 hidden lg:flex text-lg">
                         <li>
-                            <a href="#" className="text-white">Home</a>
+                            <a href="#" className="">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="text-white">About</a>
+                            <a href="#" className="">Login</a>
                         </li>
                         <li>
-                            <a href="#" className="text-white">Contact</a>
+                            <a href="#" className="">Cadastro</a>
                         </li>
                     </ul>
                 </nav>
@@ -34,21 +34,21 @@ export function Header(){
             lg:hidden
             flex flex-col gap-4
             z-10
-            ${sideMenu ? 'right-0 w-[300px] h-screen fixed top-[7.5rem]' : 'right-[-300px] w-0 absolute h-0 hidden'}
+            ${sideMenu ? 'right-0 w-[300px] h-screen fixed top-[7.5rem]' : 'right-[-300px] w-0 absolute h-0'}
             pl-[40px] pr-[30px]
             bg-primary
             transition-all
             duration-700`
         }>
-                    <ul className="flex flex-col items-center space-y-5">
+                    <ul className={`flex flex-col items-center space-y-5 text-lg ${!sideMenu && "hidden"}`}>
                         <li>
-                            <a href="#" className="text-white">Home</a>
+                            <a href="#" className="">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="text-white">About</a>
+                            <a href="#" className="">Login</a>
                         </li>
                         <li>
-                            <a href="#" className="text-white">Contact</a>
+                            <a href="#" className="">Cadastro</a>
                         </li>
                     </ul>
         </aside>
