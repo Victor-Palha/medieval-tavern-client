@@ -1,12 +1,12 @@
 import { Recipes } from "../../@types/recipes";
-import { PiCookingPot , PiHeart} from "react-icons/pi";
+import { PiCookingPot , PiHeart, PiTimer} from "react-icons/pi";
 
 
 export function Cards(item: Recipes){
     return (
         <div 
             className="max-w-[300px] min-w-[300px]
-                max-h-[400px] min-h-[400px]
+                max-h-[450px] min-h-[450px]
                 bg-white rounded-xl
                 overflow-hidden shadow-lg
                 opacity-90
@@ -30,7 +30,8 @@ export function Cards(item: Recipes){
                     ))}
                     </li>
                 </ul>
-                    <p className="flex items-center gap-2"><PiCookingPot/> Serve: {item.serves}</p>
+                    <p className="flex items-center gap-2"><PiCookingPot/> Serve {item.serves}</p>
+                    <p className="flex items-center gap-2"><PiTimer/>{item.time}</p>
                     <p className="flex items-center gap-2"><PiHeart/> {item.stars}</p>
                     {/* <span className="text-sm">{item.description}</span> */}
             </div>

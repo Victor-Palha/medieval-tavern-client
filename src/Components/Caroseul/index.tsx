@@ -23,12 +23,12 @@ export function Caroseul({recipes, loading}: CaroseulProps){
         <motion.div 
             ref={corouselRef}
             whileTap={{cursor: "grabbing"}}
-            className="cursor-grab overflow-hidden p-10"
+            className="cursor-grab overflow-hidden p-5"
         >
             <motion.div
                 drag="x"
                 dragConstraints={{left: -width, right: 0}}
-                className="flex gap-3"
+                className="flex gap-3 lg:justify-center items-center"
             >
                 {recipes.map((item)=> (
                     <motion.div key={item._id}>
@@ -43,6 +43,7 @@ export function Caroseul({recipes, loading}: CaroseulProps){
                             description={item.description}
                             image={item.image}
                             stars={item.stars}
+                            time={item.time}
                         />
                     </motion.div>
                 ))}

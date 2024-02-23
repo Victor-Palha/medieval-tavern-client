@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from '../../assets/logo.svg';
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 export function Header(){
     const [sideMenu, setSideMenu] = useState(false);
@@ -9,7 +10,9 @@ export function Header(){
         <>
         <header className="bg-primary shadow-md">
             <div className="container mx-auto p-5 flex justify-between items-center">
-                <img src={logo} alt="Logo" className="w-20 lg:w-30"/>
+                <Link to="/">
+                    <img src={logo} alt="Logo" className="w-20 lg:w-30"/>
+                </Link>
                 <nav className=''>
                     <RxHamburgerMenu 
                         className="lg:hidden cursor-pointer" 

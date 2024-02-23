@@ -9,4 +9,5 @@ export type Recipes = {
     description: string,
     image: string
     stars: number
+    time: string
 }
