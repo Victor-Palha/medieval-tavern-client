@@ -1,9 +1,10 @@
 import { PiHeart } from "react-icons/pi";
 import { Recipes } from "../../@types/recipes";
+import { Link } from "react-router-dom";
 
 export function List(recipe: Recipes){
     return (
-        <li className="flex max-h-[300px] overflow-hidden w-full gap-3  cursor-pointer">
+        <Link to={`/receita/${recipe._id}`} className="flex max-h-[300px] overflow-hidden w-full gap-3  cursor-pointer">
             <div>
                 <img 
                     src={recipe.image} 
@@ -33,6 +34,6 @@ export function List(recipe: Recipes){
                 </ul>
                 <p className="text-sm font-light">{recipe.description}</p>
             </div>
-        </li>
+        </Link>
     )
 }

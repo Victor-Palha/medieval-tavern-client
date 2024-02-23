@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { Recipes } from "../../@types/recipes";
 import { PiCookingPot , PiHeart, PiTimer} from "react-icons/pi";
 
 
 export function Cards(item: Recipes){
+    const navigate = useNavigate()
     return (
         <div 
+
             className="max-w-[300px] min-w-[300px]
                 max-h-[450px] min-h-[450px]
                 bg-white rounded-xl
@@ -17,7 +20,7 @@ export function Cards(item: Recipes){
                 alt={item.name}
                 className="w-full h-[200px] object-cover rounded-t-xl pointer-events-none"
             />
-            <div className="p-[12px] flex flex-col gap-2">
+            <div className="p-[12px] flex flex-col gap-2 cursor-pointer" onClick={()=>navigate(`/receita/${item._id}`)}>
                 <p
                     className="text-[16px] font-bold"
                 >{item.name}</p>

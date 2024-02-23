@@ -5,6 +5,7 @@ import { api } from "../../config/axios";
 import { Recipes } from "../../@types/recipes";
 import { Caroseul } from "../../Components/Caroseul";
 import { Link } from "react-router-dom";
+import { Loading } from "../../Components/Loading";
 
 export function Home(){
     const [recipes, setRecipes] = useState<Recipes[]>([])
@@ -28,7 +29,10 @@ export function Home(){
                 <p className="text-lg font-bold">Últimas Receitas</p>
                 <Link to={"/receitas"} className="font-bold text-primary">Ver todas</Link>
             </div>
-            <Caroseul recipes={recipes} loading={loading}/>
+            {!loading && (<Caroseul recipes={recipes} loading={loading}/>)}
+            {loading && (
+                <Loading/>
+            )}
         </div>
     )
 }
