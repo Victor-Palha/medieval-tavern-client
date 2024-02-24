@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
-import perfil from '../../assets/perfil.jpeg'
-type WelcomeProps = {
-    name: string
+import perfil from '../../assets/noAuth.jpeg'
 
-}
-export function Welcome({name = "Ash"}: WelcomeProps){
+export function NoAuth(){
     const [text, setText] = useState('')
-    const line = "O que você quer cozinhar hoje?"
+    const line = "Parece que você não está logado, que tal se cadastrar ou fazer login? para explorar o mundo das receitas!"
 
     function write(line: string, counter = 0){
         if(counter < line.length){
@@ -25,7 +22,7 @@ export function Welcome({name = "Ash"}: WelcomeProps){
         className="container p-5 bg-modal rounded-lg flex mt-2 shadow-lg mx-auto w-[90%] items-center justify-around"
         >
             <div className='flex flex-col items-start gap-3'>
-                <h1 className="text-4xl">Olá, {name}!</h1>
+                <h1 className="text-4xl">Olá, viajante!</h1>
                 <p className='italic'>{text}</p>
             </div>
             <img src={perfil} className='w-[100px] rounded-full border-[4px] border-font shadow-md animate-bounce-small'/>

@@ -10,4 +10,9 @@ export type Recipes = {
     image: string
     stars: number
     time: string
+    createdBy: {
+        _id: string,
+        name: string
+        image: string
+    }
 }

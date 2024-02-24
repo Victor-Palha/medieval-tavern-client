@@ -44,6 +44,7 @@ export function Caroseul({recipes, loading}: CaroseulProps){
                             image={item.image}
                             stars={item.stars}
                             time={item.time}
+                            createdBy={item.createdBy}
                         />
                     </motion.div>
                 ))}

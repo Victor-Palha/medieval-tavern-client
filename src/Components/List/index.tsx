@@ -19,12 +19,12 @@ export function List(recipe: Recipes){
             </div>
             <div className="flex flex-col overflow-hidden max-h-[200px] gap-2 group">
                 <p 
-                className="text-lg font-bold border-b-[1px] border-secondary transition duration-300 group-hover:border-primary">
+                className="text-md font-bold border-b-[1px] border-secondary transition duration-300 group-hover:border-primary">
                     {recipe.name}
                 </p>
                 <div className="flex gap-2">
-                    <span className="flex items-center gap-1"><PiHeart/> {recipe.stars}</span>
-                    <span className="flex items-center">Serve até {recipe.serves}</span>
+                    <span className="flex text-sm items-center gap-1"><PiHeart/> {recipe.stars}</span>
+                    <span className="flex text-sm items-center">Serve até {recipe.serves}</span>
                 </div>
                 <ul>
                     <li className="text-[12px] font-light">{recipe.tags.map((tag, index) => (
@@ -32,7 +32,7 @@ export function List(recipe: Recipes){
                     ))}
                     </li>
                 </ul>
-                <p className="text-sm font-light">{recipe.description}</p>
+                <p className="text-[10px] md:text-sm font-light">{recipe.description}</p>
             </div>
         </Link>
     )
