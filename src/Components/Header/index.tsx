@@ -38,7 +38,7 @@ export function Header(){
                         ) : (
                             <>
                                 <li>
-                                    <Link to="" className='flex items-center gap-2'>
+                                    <Link to={`/profile/${userInformation._id}/${userInformation.name}`}className='flex items-center gap-2'>
                                     <img 
                                         src={userInformation.image}
                                         className="w-12 h-12 rounded-full object-cover border-[2px] border-font shadow-md pointer-events-none"    
@@ -83,7 +83,7 @@ export function Header(){
                         ) : (
                             <>
                                 <li>
-                                    <Link to="" className='flex items-center gap-2'>
+                                    <Link to={`/profile/${userInformation._id}/${userInformation.name}` } className='flex items-center gap-2'>
                                     <img 
                                         src={userInformation.image}
                                         className="w-12 h-12 rounded-full object-cover border-[2px] border-font shadow-md pointer-events-none"    

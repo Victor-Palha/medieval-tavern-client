@@ -1,5 +1,5 @@
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { Recipes as TRecipes } from "../../@types/recipes"
 import { useEffect, useRef, useState } from "react"
 import { api } from "../../config/axios"
@@ -48,14 +48,14 @@ export function Recipe(){
                         alt={recipe.name}
                         className="h-[270px] w-full object-cover rounded-3xl px-2"
                     />
-                    <div className="w-full flex justify-center items-center flex-col">
+                    <Link to={`/profile/${recipe.createdBy._id}/${recipe.createdBy.name}`} className="w-full flex justify-center items-center flex-col">
                         <img 
                             src={recipe.createdBy.image} 
                             alt={`foto de perfil de ${recipe.createdBy.name}`}
                             className="w-24 h-24 rounded-full object-cover border-2 border-font top-[-50px] relative animate-bounce-small shadow-2xl"
                         />
                         <h2 className="text-lg font-bold top-[-50px] relative">Criado por {recipe.createdBy.name}</h2>
-                    </div>
+                    </Link>
                     <p className="px-6 py-4 font-light">{recipe.description}</p>
                 </div>
             </header>
