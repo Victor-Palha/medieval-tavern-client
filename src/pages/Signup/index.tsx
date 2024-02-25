@@ -1,4 +1,4 @@
-import { Header } from "../../Components/Header";
+import { Header } from "../../components/Header";
 import { PiUserCircle } from "react-icons/pi";
 import { HiOutlineMail } from "react-icons/hi";
 import { CiLock } from "react-icons/ci";
@@ -7,7 +7,7 @@ import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { useState } from "react";
 import { api } from "../../config/axios";
 import { toast } from "react-toastify";
-import { Loading } from "../../Components/Loading";
+import { Loading } from "../../components/Loading";
 
 export function SignUp(){
     const [isLoading, setIsLoading] = useState(false);

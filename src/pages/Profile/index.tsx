@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom"
-import { Header } from "../../Components/Header"
+import { Header } from "../../components/Header"
 import { api } from "../../config/axios"
 import { useEffect, useState } from "react"
 import { Recipes } from "../../@types/recipes"
 import { PiCookingPotFill, PiHeartFill } from "react-icons/pi"
 import { TbFileSad } from "react-icons/tb";
-import { List } from "../../Components/List"
+import { List } from "../../components/List"
+import { LoadingFB } from "../../components/LoadingFB"
 
 type UserProfile = {
     name: string;
@@ -36,11 +37,10 @@ export function Profile(){
     }, [id])
 
     return (
-        <>
-        {!isLoading && (
+        <> 
             <main>
                 <Header/>
-                <div className="flex flex-col justify-center items-center">
+                {!isLoading && (<div className="flex flex-col justify-center items-center">
                     <img 
                         src={userProfile.image} 
                         alt={userProfile.name}
@@ -48,7 +48,7 @@ export function Profile(){
                     />
                     <h1 className="text-2xl font-bold">{userProfile.name.split(" ")[0]}</h1>
                     <p className="mt-2 italic">{userProfile.description}</p>
-                </div>
+                </div>)}
 
                 <div className="mt-5">
                     <nav className="flex items-center justify-evenly bg-primary w-[80%] mx-auto p-4 rounded-md shadow">
@@ -68,8 +68,8 @@ export function Profile(){
                     </nav>
                 </div>
 
-                {isRecipesSelected && (
-                    <div className="mt-5">
+                {isRecipesSelected && !isLoading && (
+                    <div className="flex flex-col gap-5 p-2 lg:w-[50%] md:w-[50%] mx-auto mt-5">
                         {userProfile.myRecipes.length > 0 ? userProfile.myRecipes.map(recipe => (
                             <List key={recipe._id} {...recipe}/>
                         )) : (
@@ -80,8 +80,8 @@ export function Profile(){
                         )}
                     </div>
                 )}
-                {!isRecipesSelected && (
-                    <div className="mt-5">
+                {!isRecipesSelected && !isLoading && (
+                    <div className="flex flex-col gap-5 p-2 lg:w-[50%] md:w-[50%] mx-auto mt-5">
                         {favoritesRecipes.length > 0 ? favoritesRecipes.map(recipe => (
                             <List key={recipe._id} {...recipe}/>
                         )) : (
@@ -92,9 +92,15 @@ export function Profile(){
                         )}
                     </div>
                 )}
+                {isLoading && (
+                    <div className="flex flex-col gap-5 p-2 lg:w-[50%] md:w-[50%] mx-auto mt-5">
+                        {[1,2,3,4,5,6,7,8,9,10].map((item) => (
+                            <LoadingFB key={item} type="list"/>
+                        ))}
+                    </div>
+                )}
                 
             </main>
-            )}
         </>
     )
 }

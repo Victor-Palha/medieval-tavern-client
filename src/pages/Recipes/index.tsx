@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Header } from "../../Components/Header";
-import { Search } from "../../Components/Search";
+import { Header } from "../../components/Header";
+import { Search } from "../../components/Search";
 import { Recipes as TRecipe } from "../../@types/recipes";
 import { api } from "../../config/axios";
-import { List } from "../../Components/List";
-import { Loading } from "../../Components/Loading";
+import { List } from "../../components/List";
+import { Loading } from "../../components/Loading";
+import { LoadingFB } from "../../components/LoadingFB";
 
 export function Recipes(){
     const [list, setList] = useState<TRecipe[]>([])
@@ -45,8 +46,10 @@ export function Recipes(){
                     <List key={recipe._id} {...recipe}/>
                 ))}
                 {loading && (
-                    <Loading/>
-                )}
+                    [1,2,3,4,5,6,7,8,9,10].map((item) => (
+                        <LoadingFB type="list" key={item}/>
+                    )
+                ))}
             </ul>
         </main>
     )

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Header } from "../../Components/Header";
+import { Header } from "../../components/Header";
 import { HiOutlineMail } from "react-icons/hi";
 import { CiLock } from "react-icons/ci";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { useContext, useState } from "react";
 import { api } from "../../config/axios";
 import { toast } from "react-toastify";
-import { Loading } from "../../Components/Loading";
+import { Loading } from "../../components/Loading";
 import { authContext } from "../../context/AuthContext";
 
 export function Login(){
