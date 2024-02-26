@@ -23,7 +23,7 @@ function EditProfilePhoto({handleNewProfileImage}: EditProfilePhotoProps){
 
     useEffect(()=>{
         handleFetchImages()
-    }, [isLoadingImages])
+    }, [])
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild>
