@@ -13,7 +13,7 @@ import {motion} from "framer-motion"
 export function Home(){
     const {auth, userInformation} = useContext(authContext)
     const corouselRef = useRef<null | HTMLDivElement>(null)
-    const [width, setWidth] = useState(0)
+    const [width, _setWidth] = useState(0)
     const [recipes, setRecipes] = useState<Recipes[]>([])
     const [isLoading, setIsLoading] = useState(true)
 

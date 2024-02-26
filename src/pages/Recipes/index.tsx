@@ -4,7 +4,6 @@ import { Search } from "../../components/Search";
 import { Recipes as TRecipe } from "../../@types/recipes";
 import { api } from "../../config/axios";
 import { List } from "../../components/List";
-import { Loading } from "../../components/Loading";
 import { LoadingFB } from "../../components/LoadingFB";
 
 export function Recipes(){
