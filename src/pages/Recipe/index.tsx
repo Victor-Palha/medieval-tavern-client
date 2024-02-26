@@ -64,7 +64,7 @@ export function Recipe(){
     useEffect(()=>{
         loading && id && getRecipe(id)
         if(corouselRef.current && !loading && userInformation.myFavorites){
-            setWidth(corouselRef.current?.scrollWidth - corouselRef.current?.offsetWidth)
+            setWidth(corouselRef.current.scrollWidth - corouselRef.current.offsetWidth)
             if(userInformation._id === recipe.createdBy._id){
                 setIsMyRecipe(true)
             }
@@ -73,7 +73,7 @@ export function Recipe(){
                 setIsFavorite(true)
             }
         }
-    }, [loading, userInformation])
+    }, [loading, userInformation, corouselRef])
 
     return (
         !loading && 

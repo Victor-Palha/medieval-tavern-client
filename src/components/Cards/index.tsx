@@ -48,7 +48,7 @@ export function Cards(item: Recipes){
                     src={item.createdBy.image}
                     className="w-12 h-12 rounded-full object-cover border-[2px] border-font shadow-md pointer-events-none"
                 />
-                <p className="text-[14px] italic">Receita criada por {item.createdBy.name.split(" ")[0]}</p>
+                <p className="text-[14px] italic">Receita publicada por {item.createdBy.name.split(" ")[0]}</p>
             </div>
         </div>
     )
