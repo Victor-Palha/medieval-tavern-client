@@ -107,7 +107,7 @@ export function Recipe(){
                             alt={`foto de perfil de ${recipe.createdBy.name}`}
                             className="w-24 h-24 rounded-full object-cover border-2 border-font top-[-50px] relative animate-bounce-small shadow-2xl"
                         />
-                        <h2 className="text-lg font-bold top-[-50px] relative">Criado por {recipe.createdBy.name}</h2>
+                        <h2 className="text-lg font-bold top-[-50px] relative">Postado por {recipe.createdBy.name}</h2>
                     </Link>
                     <p className="px-6 py-4 font-light">{recipe.description}</p>
                 </div>
