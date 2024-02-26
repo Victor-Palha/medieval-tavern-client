@@ -1,13 +1,18 @@
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom"
 import { Recipes as TRecipes } from "../../@types/recipes"
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { api } from "../../config/axios"
 import {motion} from "framer-motion"
-import { PiHeartFill } from "react-icons/pi";
+import { PiHeartFill, PiTrashThin } from "react-icons/pi";
+import { authContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 export function Recipe(){
-    const {id} = useParams<string>() 
+    const {id} = useParams<string>()
+    const [isFavorite, setIsFavorite] = useState(false)
+    const [isMyRecipe, setIsMyRecipe] = useState(false)
+    const {auth, userInformation, checkAuth} = useContext(authContext)
     const [recipe, setRecipe] = useState<TRecipes>({} as TRecipes)
     const [loading, setLoading] = useState(true)
     const corouselRef = useRef<null | HTMLDivElement>(null)
@@ -20,12 +25,55 @@ export function Recipe(){
         setLoading(false)
     }
 
+    async function handleGiveStar(){
+        if(!auth || !id) {
+            toast.warning("Você precisa estar logado para favoritar uma receita"!)
+        }
+        else{
+            try {
+                await api.patch(`/recipes/star/${id}`, {}, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("@mt:client")}`
+                    }
+                })
+                setIsFavorite(!isFavorite)
+                await checkAuth()
+            } catch (error) {
+                toast.error("Erro ao favoritar a receita")
+            }
+        }
+    }
+
+    async function handleDeleteRecipe(){
+        if(!id) return;
+        const confirm = window.confirm("Você tem certeza que deseja deletar essa receita?")
+        if(!confirm) return;
+        try {
+            await api.delete(`/recipes/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("@mt:client")}`
+                }
+            })
+            toast.success("Receita deletada com sucesso")
+            window.location.href = "/"
+        } catch (error) {
+            toast.error("Erro ao deletar receita")
+        }
+    }
+
     useEffect(()=>{
         loading && id && getRecipe(id)
-        if(corouselRef.current && !loading){
+        if(corouselRef.current && !loading && userInformation.myFavorites){
             setWidth(corouselRef.current?.scrollWidth - corouselRef.current?.offsetWidth)
+            if(userInformation._id === recipe.createdBy._id){
+                setIsMyRecipe(true)
+            }
+            const favoriteRecipes = userInformation.myFavorites.filter(favorite => favorite === id)
+            if(favoriteRecipes.length > 0){
+                setIsFavorite(true)
+            }
         }
-    }, [loading])
+    }, [loading, userInformation])
 
     return (
         !loading && 
@@ -37,10 +85,15 @@ export function Recipe(){
                         <button onClick={()=>history.back()}><IoArrowBackCircleOutline size={25}/></button>
                         <h1 className="text-2xl font-bold">{recipe.name}</h1>
                     </div>
-                    <button className="flex items-center gap-1 group">
-                        <PiHeartFill size={30} className="group-hover:fill-red-500 group-hover:scale-110 transition "/>
-                        {recipe.stars}
-                    </button>
+                    {isMyRecipe ? (
+                        <button className="flex items-center gap-1 group" onClick={()=>handleDeleteRecipe()}>
+                            <PiTrashThin size={30} className="group-hover:fill-red-500 group-hover:scale-110 transition "/>
+                        </button>
+                    ) : (
+                        <button className="flex items-center gap-1 group" onClick={()=>handleGiveStar()}>
+                            <PiHeartFill size={30} className={isFavorite ? "fill-red-500" : "group-hover:fill-red-500 group-hover:scale-110 transition "}/>
+                        </button>
+                    )}
                 </nav>
                 <div>
                     <img 

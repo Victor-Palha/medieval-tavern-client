@@ -16,7 +16,10 @@ export default {
       },
       animation: {
         "bounce-small": "bounceSmall 1s infinite",
-        "background": "placeHolderShimmer 1.25s linear infinite"
+        "gear-rotate": "GearRotate 2s ",
+        "overlayShow": 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        "contentShow": 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+
       },
       keyframes: {
         bounceSmall: {
@@ -27,14 +30,22 @@ export default {
                 transform: "none"
             }
         },
-        placeHolderShimmer: {
-            "0%": {
-              backgroundPosition: "-468px 0"
-            },
-            "100%": {
-                backgroundPosition: "468px 0"
-            }
-        }
+        GearRotate: {
+          "0%, 70%": {
+              transform: "rotate(180deg)"
+          },
+          "70%, 100%": {
+              transform: "rotate(-180deg)"
+          },
+        },
+        overlayShow: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        contentShow: {
+          from: { opacity: '0', transform: 'translate(-50%, -48%) scale(0.96)' },
+          to: { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
+        },
       }
     },
   },

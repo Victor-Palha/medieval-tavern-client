@@ -5,6 +5,8 @@ import { UserInformation } from "../@types/user";
 interface AuthContextProps{
     auth: boolean | null;
     handleAuth(isUserAuth: boolean): void;
+    handleLogout(): void
+    checkAuth(): Promise<void>
     userInformation: UserInformation
 }
 
@@ -19,6 +21,14 @@ export function AuthProvider({children}: AuthProviderProps){
 
     function handleAuth(isUserAuth: boolean){
         setIsAuth(isUserAuth)
+    }
+
+    function handleLogout(){
+        const confirmLogout = window.confirm("Deseja realmente deslogar?")
+        if(!confirmLogout) return
+        localStorage.removeItem("@mt:client")
+        window.location.reload()
+        setIsAuth(false)
     }
 
     async function checkAuth(){
@@ -42,7 +52,7 @@ export function AuthProvider({children}: AuthProviderProps){
     }, [isAuth])
 
     return (
-        <authContext.Provider value={{auth: isAuth, handleAuth, userInformation}}>
+        <authContext.Provider value={{auth: isAuth, handleAuth, userInformation, handleLogout, checkAuth}}>
             {children}
         </authContext.Provider>
     )

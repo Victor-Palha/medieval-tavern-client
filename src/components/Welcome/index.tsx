@@ -25,7 +25,7 @@ export function Welcome({name = "Ash"}: WelcomeProps){
         className="container p-5 bg-modal rounded-lg flex mt-2 shadow-lg mx-auto w-[90%] items-center justify-around"
         >
             <div className='flex flex-col items-start gap-3'>
-                <h1 className="text-4xl">Olá, {name}!</h1>
+                <h1 className="text-4xl">Olá, {name.split(" ")[0]}!</h1>
                 <p className='italic'>{text}</p>
             </div>
             <img src={perfil} className='w-[100px] rounded-full border-[4px] border-font shadow-md animate-bounce-small'/>

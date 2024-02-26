@@ -4,4 +4,5 @@ export type UserInformation = {
     image: string;
     description: string;
     amount_of_recipes: number;
+    myFavorites: string[]
 }
