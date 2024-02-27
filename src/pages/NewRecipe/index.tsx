@@ -161,7 +161,7 @@ export function NewRecipe(){
                                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Clique para o upload</span> ou arraste e solte</p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">PNG ou JPG</p>
                                 </div>
-                                <input id="dropzone-file" type="file" className="hidden" accept="image/jpeg,image/png" {...getInputProps()} />
+                                <input id="dropzone-file" type="file" className="hidden" accept="image/*" {...getInputProps()} />
                             </label>
                         )}
                     </div>
